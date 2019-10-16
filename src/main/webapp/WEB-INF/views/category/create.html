@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{ca.create.title}"></title>
+</head>
+<body>
+<h1 th:text="#{ca.create.h1Tag}"></h1>
+<p>
+    <a th:href="@{/category/list}" th:text="#{ca.create.aTag}"></a>
+</p>
+<form th:action="@{/category/create}" th:object="${category}" method="post">
+    <table>
+        <tr>
+            <td th:text="#{ca.create.nameTd}"></td>
+            <td><input type="text" th:field="*{name}"/></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" th:value="#{ca.create.submitBtn}"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

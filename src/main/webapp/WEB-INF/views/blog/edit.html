@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit employee</title>
+</head>
+<body>
+<h1>Edit employee</h1>
+<br>
+Language: <a href="?lang=en">English</a> | <a href="?lang=vn"> Việt Nam</a>
+<br>
+<p>
+    <a href="/blog/list">Employee list</a>
+</p>
+<form th:action="@{/blog/edit/}" th:object="${blog}" method="post" enctype="multipart/form-data">
+    <input th:type="hidden" name="id" th:field="*{id}">
+    <table>
+        <tr>
+            <td>Name:</td>
+            <td><input type="text" th:field="*{tittle}"/></td>
+        </tr>
+        <tr>
+            <td>Birth date:</td>
+            <td><input type="text" th:field="*{createDate}"/></td>
+        </tr>
+        <tr>
+            <td>Address:</td>
+            <td><input type="text" th:field="*{content}"/></td>
+        </tr>
+        <tr>
+            <td>Avatar:</td>
+            <td>
+                <img width="150px" height="150px" th:src="@{'/i/' + ${blog.image}}">
+                <input type="file" th:field="*{image}"/>
+            </td>
+        </tr>
+        <tr>
+            <td>Department:</td>
+            <td>
+                <select th:field="*{category}">
+                    <option th:each="p : ${categories}" th:value="${p.id}" th:text="${p.name}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Update Employee"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

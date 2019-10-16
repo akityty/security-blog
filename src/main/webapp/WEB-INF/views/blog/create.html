@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Employee</title>
+</head>
+<body>
+<h1>Create Employee</h1>
+<p>
+    <a th:href="@{/blog/list}">employee list</a>
+</p>
+<form th:action="@{/blog/create}" th:object="${blogForm}" method="post" enctype="multipart/form-data">
+    <table>
+        <tr>
+            <td>Name:</td>
+            <td><input type="text" th:field="*{tittle}"/></td>
+        </tr>
+        <tr>
+            <td>Date:</td>
+            <td>
+            <br>
+            <input type="date" th:field="*{createDate}">
+            </td>
+        </tr>
+
+        <tr>
+            <td>avatar:</td>
+            <td><input type="file" th:field="*{image}"/></td>
+        </tr>
+        <tr>
+            <td>salary:</td>
+            <td><input type="text" th:field="*{content}"/></td>
+        </tr>
+        <tr>
+            <td>Department:</td>
+            <td>
+                <select th:field="*{category}">
+                    <option th:each="department: ${categories}" th:value="${categories.id}"
+                            th:text="${department.name}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Create Employee"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

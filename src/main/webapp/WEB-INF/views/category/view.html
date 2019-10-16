@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>View department</title>
+</head>
+<body>
+<h1>View department: <span th:text="${category.name}"></span></h1>
+<a href="/department/list">Department list</a>
+<table border="1">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Birth Date</th>
+        <th>Address</th>
+        <th>Avatar</th>
+        <th>Salary</th>
+        <th>Edit</th>
+        <th>Delete</th>
+        <th>View</th>
+    </tr>
+    <th:block th:each="employee : ${blogs}">
+        <tr>
+            <td th:text="${employee.id}"></td>
+            <td th:text="${employee.createDate}"></td>
+            <td th:text="${employee.tittle}"></td>
+            <td th:text="${employee.content}"></td>
+            <td><img width="150px" height="150px" th:src="@{'/i/' + ${employee.image}}"></td>
+            <td th:text="${employee.category}"></td>
+            <td><a th:href="@{/employee/edit/__${employee.id}__ }">Edit</a></td>
+            <td><a th:href="@{/employee/delete/__${employee.id}__ }">Delete</a></td>
+            <td><a th:href="@{/employee/view/__${employee.id}__}">View</a> </td>
+        </tr>
+    </th:block>
+</table>
+</body>
+</html>
